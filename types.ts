@@ -6,9 +6,6 @@ export interface MqttConfig {
 
 export interface AppConfig {
   googleApiKey: string;
-  livekitUrl: string;
-  livekitApiKey: string;
-  livekitApiSecret: string;
   mqttTopic: string;
 }
 
@@ -22,7 +19,7 @@ export enum ConnectionState {
 export interface LogEntry {
   id: string;
   timestamp: Date;
-  source: 'User' | 'AI' | 'System' | 'MQTT' | 'LiveKit';
+  source: 'User' | 'AI' | 'System' | 'MQTT';
   message: string;
   type: 'info' | 'error' | 'success';
 }
