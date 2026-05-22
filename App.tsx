@@ -90,7 +90,7 @@ export default function App() {
           const base64Data = await processImageForGemini(blob);
           if (sessionRef.current && isSessionActive.current) {
             sessionRef.current.sendRealtimeInput({
-              media: {
+              video: {
                 mimeType: 'image/jpeg',
                 data: base64Data
               }
@@ -187,7 +187,7 @@ export default function App() {
         if (isSessionActive.current) {
           try {
             sessionRef.current.sendRealtimeInput({
-                media: {
+                video: {
                     mimeType: file.type,
                     data: base64String
                 }
@@ -224,7 +224,7 @@ export default function App() {
                 const base64Data = await processImageForGemini(blob);
                 if (sessionRef.current && isSessionActive.current) {
                   sessionRef.current.sendRealtimeInput({
-                      media: { mimeType: 'image/jpeg', data: base64Data }
+                      video: { mimeType: 'image/jpeg', data: base64Data }
                   });
                   addLog("Snapshot sent to AI", "User", "success");
                 }
@@ -326,7 +326,7 @@ export default function App() {
                      // DOUBLE GUARD: Check again before sending inside the promise
                      if (isSessionActive.current) {
                         try {
-                          session.sendRealtimeInput({ media: pcmBlob });
+                          session.sendRealtimeInput({ audio: pcmBlob });
                         } catch(err) {
                           console.warn("Error sending audio frame, likely connection closing", err);
                         }
